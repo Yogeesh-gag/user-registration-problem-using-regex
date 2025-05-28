@@ -2,6 +2,7 @@ package org.example;
 import java.util.Scanner;  // Import Scanner class to read input from the user
 
 public class UserRegistration {
+
     // Method to validate the first name
     public static boolean validateFirstName(String firstName) {
         // First name must start with a capital letter and have at least 3 letters
@@ -24,6 +25,12 @@ public class UserRegistration {
         // return email.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})+$");
     }
 
+
+    //Method to validate mobile number
+    public static boolean validateMobileNumber(String mobileNumber){
+        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+    }
+
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);  // Create scanner object to take user input
@@ -38,10 +45,15 @@ public class UserRegistration {
         // System.out.println("Second name valid: " + validateSecondName(secondName));
 
         // Take email input from user
-        System.out.println("Enter email");
-        String email = scanner.nextLine();
+        // System.out.println("Enter email");
+        // String email = scanner.nextLine();
 
         // Display email validation result
-        System.out.println("Email valid: " + validateEmail(email));
+        // System.out.println("Email valid: " + validateEmail(email));
+
+
+        System.out.println("Enter mobile number");
+        String mobileNUmber=scanner.nextLine();
+        System.out.println("Email validate "+validateMobileNumber(mobileNUmber));
     }
 }
