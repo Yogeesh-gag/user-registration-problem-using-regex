@@ -1,44 +1,47 @@
 package org.example;
-
-import java.util.Scanner;  // Used to take input from the user
+import java.util.Scanner;  // Import Scanner class to read input from the user
 
 public class UserRegistration {
-
-    // Method to validate first name
+    // Method to validate the first name
     public static boolean validateFirstName(String firstName) {
-        return firstName.matches("^[A-Z][a-zA-Z]{2,}$");  // Must start with uppercase and have at least 3 letters
+        // First name must start with a capital letter and have at least 3 letters
+        return firstName.matches("^[A-Z][a-zA-Z]{2,}$");
     }
 
-    // Method to validate second name (last name)
+    // Method to validate the second name (last name)
     public static boolean validateSecondName(String secondName) {
-        return secondName.matches("^[A-Z][a-zA-Z]{2,}$");  // Same validation rule
+        // Same rule: must start with a capital and have at least 3 letters
+        return secondName.matches("^[A-Z][a-zA-Z]{2,}$");
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);  // Create Scanner object
+    // Method to validate an email address
+    public static boolean validateEmail(String email) {
+        // Email should follow standard format: characters, optional special chars, @, domain, and extension
+        return email.matches("^[a-zA-Z0-9]+([._+-]+[a-zA-Z0-9])?@[a-zA-Z0-9]+[a-zA-Z0-9]+\\.[a-z]{2,4}(\\.[a-z]{2,})?$");
 
-        // Take first name input user
-        System.out.println("Enter First Name");
-        String firstName = scanner.nextLine();
+        // Alternate patterns for more flexibility can be used if needed (commented for reference)
+        // return email.matches("^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$");
+        // return email.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})+$");
+    }
 
-        // Take second name input from user
-        System.out.println("Enter Second Name");
-        String secondName = scanner.nextLine();
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);  // Create scanner object to take user input
 
-        // Validate first name and show result
-        boolean isFirstNameValid = validateFirstName(firstName);
-        System.out.println("First name having First character Upper and having minimum 3 characters: " + isFirstNameValid);
+        // --- Uncomment these lines if you want to take name inputs too ---
+        // System.out.println("Enter First Name");
+        // String firstName = scanner.nextLine();
+        // System.out.println("First name valid: " + validateFirstName(firstName));
 
-        // Validate second name and show result
-        boolean isSecondNameValid = validateSecondName(secondName);
-        System.out.println("Second name having First character Upper and having minimum 3 characters: " + isSecondNameValid);
+        // System.out.println("Enter Second Name");
+        // String secondName = scanner.nextLine();
+        // System.out.println("Second name valid: " + validateSecondName(secondName));
 
-        // If both names are valid, display them
-        if (isFirstNameValid && isSecondNameValid) {
-            System.out.println("Full Name: " + firstName + " " + secondName);
-        } else {
-            System.out.println("Invalid name(s) entered. Please follow the format.");
-        }
+        // Take email input from user
+        System.out.println("Enter email");
+        String email = scanner.nextLine();
+
+        // Display email validation result
+        System.out.println("Email valid: " + validateEmail(email));
     }
 }
-
