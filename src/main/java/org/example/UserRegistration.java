@@ -3,31 +3,42 @@ package org.example;
 import java.util.Scanner;  // Used to take input from the user
 
 public class UserRegistration {
-    // Method to check if the first name is valid
+
+    // Method to validate first name
     public static boolean validateFirstName(String firstName) {
-        // The name must start with a capital letter and have at least 3 letters
-        return firstName.matches("^[A-Z][a-zA-Z]{2,}$");
+        return firstName.matches("^[A-Z][a-zA-Z]{2,}$");  // Must start with uppercase and have at least 3 letters
+    }
+
+    // Method to validate second name (last name)
+    public static boolean validateSecondName(String secondName) {
+        return secondName.matches("^[A-Z][a-zA-Z]{2,}$");  // Same validation rule
     }
 
     public static void main(String[] args) {
-        // Create a Scanner object to read user input
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);  // Create Scanner object
 
-        // Ask the user to enter their first name
+        // Take first name input user
         System.out.println("Enter First Name");
-        String firstName = scanner.nextLine();  // Read the input
+        String firstName = scanner.nextLine();
 
-        // Check if the name is valid
-        boolean isValid = validateFirstName(firstName);
+        // Take second name input from user
+        System.out.println("Enter Second Name");
+        String secondName = scanner.nextLine();
 
-        // Show validation result
-        System.out.println("First name having First character Upper and having minimum 3 characters: " + isValid);
+        // Validate first name and show result
+        boolean isFirstNameValid = validateFirstName(firstName);
+        System.out.println("First name having First character Upper and having minimum 3 characters: " + isFirstNameValid);
 
-        // If valid, display the name
-        if (isValid) {
-            System.out.println("Your First Name is: " + firstName);
+        // Validate second name and show result
+        boolean isSecondNameValid = validateSecondName(secondName);
+        System.out.println("Second name having First character Upper and having minimum 3 characters: " + isSecondNameValid);
+
+        // If both names are valid, display them
+        if (isFirstNameValid && isSecondNameValid) {
+            System.out.println("Full Name: " + firstName + " " + secondName);
         } else {
-            System.out.println("Invalid First Name entered.");
+            System.out.println("Invalid name(s) entered. Please follow the format.");
         }
     }
 }
+
