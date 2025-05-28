@@ -25,16 +25,23 @@ public class UserRegistration {
         // return email.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})+$");
     }
 
-
-    //Method to validate mobile number
-    public static boolean validateMobileNumber(String mobileNumber){
+    // Method to validate mobile number
+    public static boolean validateMobileNumber(String mobileNumber) {
+        // Mobile number must start with country code (at least 2 digits), followed by space and 10-digit number
+        // Example: 91 9876543210
         return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
     }
 
-
-    //Method to validate password as per Rule-1
+    // Method to validate password as per Rule-1
     public static boolean validateRuleOne(String passwordRuleOne) {
+        // Password must have at least 8 characters and no whitespace
         return passwordRuleOne.matches("^[^\\s]{8,}");
+    }
+
+    // Method to validate password as per Rule-2
+    public static boolean validateRuleTwo(String passwordRuleTwo) {
+        // Password must have at least 8 characters, no whitespace, and at least one uppercase letter
+        return passwordRuleTwo.matches("^(?=.*[A-Z])[^\\s]{8,}$");
     }
 
     public static void main(String[] args)
@@ -63,9 +70,14 @@ public class UserRegistration {
         // System.out.println("Email validate "+validateMobileNumber(mobileNUmber));
 
         // Taking the password from the user
+        // System.out.println("Enter password");
+        // String passwordRuleOne=scanner.nextLine();
+        // System.out.println("Email validate "+validateRuleOne(passwordRuleOne));
+
+        // Taking the password from the user
         System.out.println("Enter password");
-        String passwordRuleOne=scanner.nextLine();
-        System.out.println("Email validate "+validateRuleOne(passwordRuleOne));
+        String passwordRuleTwo=scanner.nextLine();
+        System.out.println("Email validate "+validateRuleTwo(passwordRuleTwo));
 
     }
 }
